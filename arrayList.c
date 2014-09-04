@@ -18,17 +18,6 @@ arrayList * initialize(primitiveType type)
    newList->arraySize = 4;
    newList->type = type;
    newList->elementSize = getSize(type);
-/*
-   switch(type) {
-       case charType:
-           newList->array = (char)malloc(sizeof(getSize(type)*4));
-           break;
-       case shortType:
-           newList->array = (short)malloc(sizeof(getSize(type)*4));
-       case intType:
-           newList->array = (int)malloc(sizeof(getSize(type)*4));
-   }
-*/
    newList->array = malloc(sizeof(getSize(type)*4));
 
    return newList;
