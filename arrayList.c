@@ -49,6 +49,7 @@ void addElement(arrayList * arrListPtr, void * element)
        int i;
        for (i = 0; i < arrListPtr->numElements; i++)
            //error line
+       free(arrListPtr->array);
        arrListPtr->array = newArray;
        arrListPtr->arraySize *= 2;
    }
