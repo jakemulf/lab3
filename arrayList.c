@@ -42,9 +42,17 @@ int getSize(primitiveType type)
  */
 void addElement(arrayList * arrListPtr, void * element)
 {
-   if (arrListPtr->numElements == arrListPtr->arraySize) {
+   if (arrListPtr->numElements == arrListPtr->arraySize) { //if array is full, resize and copy
        void * newArray = malloc(sizeof((arrListPtr->array)*2));
-       
+       int i;
+       for (i = 0; i < sizeof(arrListPtr->array)/(arrListPtr->elementSize); i++) //sizeof(array)/elementSize
+                                                                    //should give the number of indexes
+           newArray[i] = arrListPtr->array[i];
+       arrListPtr->array = newArray;
+       arrListPtr->arraySize *= 2;
+   }
+   arrListPtr->array[arrListPtr->numElements] = *element;
+   (arrListPtr->numElements)++;
 }
 
 void removeElement(arrayList * arrListPtr, int index)
