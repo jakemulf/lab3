@@ -18,7 +18,19 @@ arrayList * initialize(primitiveType type)
    newList->arraySize = 4;
    newList->type = type;
    newList->elementSize = getSize(type);
+/*
+   switch(type) {
+       case charType:
+           newList->array = (char)malloc(sizeof(getSize(type)*4));
+           break;
+       case shortType:
+           newList->array = (short)malloc(sizeof(getSize(type)*4));
+       case intType:
+           newList->array = (int)malloc(sizeof(getSize(type)*4));
+   }
+*/
    newList->array = malloc(sizeof(getSize(type)*4));
+
    return newList;
 }
 
@@ -47,11 +59,11 @@ void addElement(arrayList * arrListPtr, void * element)
        void * newArray = malloc((arrListPtr->arraySize)*(arrListPtr->elementSize)*2);
        int i;
        for (i = 0; i < arrListPtr->numElements; i++)
-//error           newArray[i] = (arrListPtr->array)[i];
+           //error line
        arrListPtr->array = newArray;
        arrListPtr->arraySize *= 2;
    }
-//error   arrListPtr->array[arrListPtr->numElements] = *element;
+   //error line
    (arrListPtr->numElements)++;
 }
 
