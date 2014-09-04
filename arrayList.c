@@ -6,22 +6,48 @@
 //static essentially makes it private to this file 
 static int getSize(primitiveType type);
 
+/* 
+ * Initializes the arrayList.  Sets the size to 4,
+ *  the number of elements to 0, the type to the parameter
+ *  type, and allocates space for the array
+ */
 arrayList * initialize(primitiveType type)
 {
-   return NULL;
+   arrayList * newList = malloc(sizeof(arrayList));
+   newList->numElements = 0;
+   newList->arraySize = 4;
+   newList->type = type;
+   newList->array = malloc(sizeof(getSize(type)*4));
+   return newList;
 }
 
+/*
+ * Returns the size (in bytes) of the given primitive type
+ */
 int getSize(primitiveType type)
 {
-   return 0;
+   if (type == charType)
+       return sizeof(char);
+   else if (type == shortType)
+       return sizeof(short);
+   else
+       return sizeof(int);
 }
 
-void addElement(arrayList * arylstP, void * element)
+/*
+ * Adds an element to the end of the list.
+ *
+ * If the list is full, the list will be doubled in size before
+ * adding the new element
+ */
+void addElement(arrayList * arrListPtr, void * element)
 {
-   return;
+   if (arrListPtr->numElements == arrListPtr->arraySize) {
+       void * newArray = malloc(sizeof((arrListPtr->array)*2));
+       
 }
 
-void removeElement(arrayList * arylstP, int index)
+void removeElement(arrayList * arrListPtr, int index)
 {
    return;
 }
