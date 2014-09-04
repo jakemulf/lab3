@@ -17,6 +17,7 @@ arrayList * initialize(primitiveType type)
    newList->numElements = 0;
    newList->arraySize = 4;
    newList->type = type;
+   newList->elementSize = getSize(type);
    newList->array = malloc(sizeof(getSize(type)*4));
    return newList;
 }
