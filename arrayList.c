@@ -48,13 +48,16 @@ void addElement(arrayList * arrListPtr, void * element)
        void * newArray = malloc((arrListPtr->arraySize)*(arrListPtr->elementSize)*2);
        int i;
        for (i = 0; i < (arrListPtr->numElements)*(arrListPtr->elementSize); i++) {
-        //copy all the bytes to the new bigger array
+           ((char *)newArray)[i] = ((char *)(arrListPtr->array))[i];
        }
        free(arrListPtr->array);
        arrListPtr->array = newArray;
        arrListPtr->arraySize *= 2;
    }
-   //copy element to last index in array
+   int i;
+   for (i = 0; i < (arrListPtr->elementSize); i++) {
+       ((char *)(arrListPtr->array))[i + (arrListPtr->numElements)] = ((char * )(element))[i];
+   }
    (arrListPtr->numElements)++;
 }
 
