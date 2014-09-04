@@ -47,13 +47,14 @@ void addElement(arrayList * arrListPtr, void * element)
    if (arrListPtr->numElements == arrListPtr->arraySize) { //if array is full, resize and copy
        void * newArray = malloc((arrListPtr->arraySize)*(arrListPtr->elementSize)*2);
        int i;
-       for (i = 0; i < arrListPtr->numElements; i++)
-           //error line
+       for (i = 0; i < (arrListPtr->numElements)*(arrListPtr->elementSize); i++) {
+        //copy all the bytes to the new bigger array
+       }
        free(arrListPtr->array);
        arrListPtr->array = newArray;
        arrListPtr->arraySize *= 2;
    }
-   //error line
+   //copy element to last index in array
    (arrListPtr->numElements)++;
 }
 
