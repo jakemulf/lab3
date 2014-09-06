@@ -63,7 +63,11 @@ void addElement(arrayList * arrListPtr, void * element)
 
 void removeElement(arrayList * arrListPtr, int index)
 {
-   return;
+   int i;
+   for (i = index; i < (arrListPtr->numElements) - 1; i++) {
+       (arrListPtr->array)[i] = (arrListPtr->array)[i+1];
+   }
+   (arrListPtr->numElements)--;
 }
       
 
@@ -76,13 +80,13 @@ void printArray(arrayList * arylstP)
    {
       if (arylstP->type == charType)
          //fill in the missing code that gets the element and &s it with 0xff
-         printf("%02x ", 0xff);
+         printf("%c ", ((char *)(arylstP->array))[i] & 0xff);
       else if (arylstP->type == shortType)
          //fill in the missing code that gets the element and &s it with 0xffff
-         printf("%04x ", 0xffff);
+         printf("%u ", ((short *)(arylstP->array))[i] & 0xffff);
       else if (arylstP->type == intType)
          //fill in the missing code that gets the element and &s it with 0xffffffff
-         printf("%08x ", 0xffffffff);
+         printf("%d ", ((int *)(arylstP->array))[i] & 0xffffffff);
    }
    printf("\n");
 }
