@@ -47,7 +47,7 @@ void addElement(arrayList * arrListPtr, void * element)
    if (arrListPtr->numElements == arrListPtr->arraySize) { //if array is full, resize and copy
        void * newArray = malloc((arrListPtr->arraySize)*(arrListPtr->elementSize)*2);
        int i;
-       for (i = 0; i < ((arrListPtr->numElements)-1)*(arrListPtr->elementSize); i++) {
+       for (i = 0; i < ((arrListPtr->numElements))*(arrListPtr->elementSize); i++) {
            ((char *)newArray)[i] = ((char *)(arrListPtr->array))[i];
        }
        free(arrListPtr->array);
@@ -62,7 +62,7 @@ void addElement(arrayList * arrListPtr, void * element)
 }
 
 void removeElement(arrayList * arrListPtr, int index)
-{
+{ 
    int i;
    if (arrListPtr->type == charType) {
        for (i = index; i < (arrListPtr->numElements) - 1; i++)
@@ -76,7 +76,7 @@ void removeElement(arrayList * arrListPtr, int index)
        for (i = index; i < (arrListPtr->numElements) - 1; i++)
            ((int *)(arrListPtr->array))[i] = ((int *)(arrListPtr->array))[i+1];
    }
-   (arrListPtr->numElements)--;
+   (arrListPtr->numElements)--; 
 }
       
 
@@ -89,13 +89,13 @@ void printArray(arrayList * arylstP)
    {
       if (arylstP->type == charType)
          //fill in the missing code that gets the element and &s it with 0xff
-         printf("%c ", ((char *)(arylstP->array))[i] & 0xff);
+         printf("%x ", ((char *)(arylstP->array))[i] /*& 0xff*/);
       else if (arylstP->type == shortType)
          //fill in the missing code that gets the element and &s it with 0xffff
-         printf("%u ", ((short *)(arylstP->array))[i] & 0xffff);
+         printf("%x ", ((short *)(arylstP->array))[i] /*& 0xffff*/);
       else if (arylstP->type == intType)
          //fill in the missing code that gets the element and &s it with 0xffffffff
-         printf("%d ", ((int *)(arylstP->array))[i] & 0xffffffff);
+         printf("%x ", ((int *)(arylstP->array))[i] /*& 0xffffffff*/);
    }
    printf("\n");
 }
