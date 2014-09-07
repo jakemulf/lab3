@@ -47,7 +47,7 @@ void addElement(arrayList * arrListPtr, void * element)
    if (arrListPtr->numElements == arrListPtr->arraySize) { //if array is full, resize and copy
        void * newArray = malloc((arrListPtr->arraySize)*(arrListPtr->elementSize)*2);
        int i;
-       for (i = 0; i < (arrListPtr->numElements)*(arrListPtr->elementSize); i++) {
+       for (i = 0; i < ((arrListPtr->numElements)-1)*(arrListPtr->elementSize); i++) {
            ((char *)newArray)[i] = ((char *)(arrListPtr->array))[i];
        }
        free(arrListPtr->array);
@@ -56,7 +56,7 @@ void addElement(arrayList * arrListPtr, void * element)
    }
    int i;
    for (i = 0; i < (arrListPtr->elementSize); i++) {
-       ((char *)(arrListPtr->array))[i + (arrListPtr->numElements)] = ((char * )(element))[i];
+       ((char *)(arrListPtr->array))[i + ((arrListPtr->numElements)*(arrListPtr->elementSize))] = ((char * )(element))[i];
    }
    (arrListPtr->numElements)++;
 }
@@ -64,8 +64,17 @@ void addElement(arrayList * arrListPtr, void * element)
 void removeElement(arrayList * arrListPtr, int index)
 {
    int i;
-   for (i = index; i < (arrListPtr->numElements) - 1; i++) {
-       (arrListPtr->array)[i] = (arrListPtr->array)[i+1];
+   if (arrListPtr->type == charType) {
+       for (i = index; i < (arrListPtr->numElements) - 1; i++)
+           ((char *)(arrListPtr->array))[i] = ((char *)(arrListPtr->array))[i+1];
+   }
+   else if (arrListPtr->type == shortType) {
+       for (i = index; i < (arrListPtr->numElements) - 1; i++)
+           ((short *)(arrListPtr->array))[i] = ((short *)(arrListPtr->array))[i+1];
+   }
+   else { //if arrListPtr->type == intType
+       for (i = index; i < (arrListPtr->numElements) - 1; i++)
+           ((int *)(arrListPtr->array))[i] = ((int *)(arrListPtr->array))[i+1];
    }
    (arrListPtr->numElements)--;
 }
