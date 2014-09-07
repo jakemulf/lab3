@@ -88,13 +88,10 @@ void printArray(arrayList * arylstP)
    for (i = 0; i < arylstP->numElements; i++)
    {
       if (arylstP->type == charType)
-         //fill in the missing code that gets the element and &s it with 0xff
          printf("%x ", ((char *)(arylstP->array))[i] & 0xff);
       else if (arylstP->type == shortType)
-         //fill in the missing code that gets the element and &s it with 0xffff
          printf("%x ", ((short *)(arylstP->array))[i] & 0xffff);
       else if (arylstP->type == intType)
-         //fill in the missing code that gets the element and &s it with 0xffffffff
          printf("%x ", ((int *)(arylstP->array))[i] & 0xffffffff);
    }
    printf("\n");
