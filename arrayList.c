@@ -90,9 +90,9 @@ void printArray(arrayList * arylstP)
       if (arylstP->type == charType)
          printf("%x ", ((char *)(arylstP->array))[i] & 0xff);
       else if (arylstP->type == shortType)
-         printf("%x ", ((short *)(arylstP->array))[i] & 0xffff);
+         printf("%04x ", ((short *)(arylstP->array))[i] & 0xffff);
       else if (arylstP->type == intType)
-         printf("%x ", ((int *)(arylstP->array))[i] & 0xffffffff);
+         printf("%08x ", ((int *)(arylstP->array))[i] & 0xffffffff);
    }
    printf("\n");
 }
