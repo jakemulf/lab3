@@ -61,6 +61,9 @@ void addElement(arrayList * arrListPtr, void * element)
    (arrListPtr->numElements)++;
 }
 
+/**
+ * Removes the element in the arrayList at the given index
+ */
 void removeElement(arrayList * arrListPtr, int index)
 { 
    int i;
@@ -79,7 +82,9 @@ void removeElement(arrayList * arrListPtr, int index)
    (arrListPtr->numElements)--; 
 }
       
-
+/**
+ * Prints the values in order in the given arrayList
+ */
 void printArray(arrayList * arylstP)
 {
    int i;
